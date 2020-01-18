@@ -1,0 +1,48 @@
+#include <bits/stdc++.h>
+#define pb push_back
+#define F first
+#define S second
+#define error(x) 	cerr<<#x<<" "<<x<<endl;
+#define all(x)			(x).begin(),(x).end()
+#define Sort(x)			sort(all(x))
+#define For(y , x)      for(int y=0 ; y<x ; y++)
+using namespace std;
+typedef long long ll;
+typedef long double ld;
+typedef pair<ll, ll> pll;
+typedef pair<int, int> pii;
+typedef string str;
+const int MAX=1e5 + 10;
+const ll MODE = (ll)1e9 + 7;
+const ll INF = (ll)1e18 + 7;
+vector <int> ve;
+vector<int> v;
+ll ans=INF;
+ll n;
+ll res;
+int id[MAX], nodes, edges;
+pair <long long, pair<int, int> > p[MAX];
+
+const int N = 1000 * 100 + 5;
+vector <pii> adj[N];
+int ans, mrk[N];
+
+void prim(int v) {
+	int w;
+	set <pii> st;
+	st.insert(mp(0, v));
+	while(!st.empty()) {
+		v = st.begin()-> Y;
+		w = st.begin()-> X;
+		st.erase(st.begin());
+		if(mrk[v]++) continue;
+		ans += w;
+
+		for(int i = 0;i < Size(adj[v]);++i)
+			if(!mrk[adj[v][i].Y])
+				st.insert(adj[v][i]);
+	}
+}
+int main(){
+
+}
