@@ -1,0 +1,55 @@
+#include <bits/stdc++.h>
+#define pb push_back
+#define F first
+#define S second
+#define error(x) 	cerr<<#x<<" "<<x<<endl;
+#define all(x)			(x).begin(),(x).end()
+#define Sort(x)			sort(all(x))
+#define For(y , x)      for(int y=0 ; y<x ; y++)
+using namespace std;
+typedef long long ll;
+typedef long double ld;
+typedef pair<ll, ll> pll;
+typedef pair<int, int> pii;
+typedef string str;
+const int MAX=1e5 + 10;
+const ll MODE = (ll)1e9 + 7;
+const ll INF = (ll)1e18 + 7;
+vector <int> ve;
+vector<int> v;
+ll ans=INF;
+ll n;
+ll res;
+int id[MAX], nodes, edges;
+pair <long long, pair<int, int> > p[MAX];
+
+int backEdge[MAXN], h[MAXN], mark[MAXN], cut[MAXN];
+vector<pii> adj[MAXN];
+
+bool mark[MAXN], ans[MAXN];
+int edge[MAXN], h[MAXN];
+vector<int> adj[MAXN];
+
+void dfs(int x, int par, int dep) {
+	mark[x] = true; h[x] = dep;
+	edge[x] = 1e9;
+
+	bool check = false;
+	int cnt = 0;
+	for (int i = 0; i < SZ(adj[x]); i ++) {
+		int v = adj[x][i]; if (v == par) continue;
+		if (mark[v]) edge[x] = min(edge[x], h[v]);
+		else {
+			cnt ++;
+			dfs(v, x, dep + 1);
+			if (edge[v] >= dep) check = true;
+			edge[x] = min(edge[x], edge[v]);
+		}
+	}
+
+	ans[x] = check;
+	if (par == -1 && cnt < 2) ans[x] = false;
+}
+int main(){
+
+}
